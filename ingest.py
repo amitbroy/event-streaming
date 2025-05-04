@@ -5,7 +5,7 @@ from datetime import datetime
 from jsonschema import validate, ValidationError
 import pandas as pd
 
-# JSON Schema definition
+# JSON Schema definition from saved schema_validation file
 with open("event_schema.json", "r") as schema_file:
     SCHEMA = json.load(schema_file)
 
@@ -56,7 +56,7 @@ def main():
             except (ValidationError, ValueError) as e:
                 log_error(record if 'record' in locals() else line.strip(), str(e))
 
-    # Write partitioned Parquet files
+    # Create partitioned Parquet files
     for (tenant, date), records in valid_records.items():
         df = pd.json_normalize(records)
         write_to_parquet(df, tenant, datetime.combine(date, datetime.min.time()))
