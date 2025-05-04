@@ -1,4 +1,3 @@
 jsonschema
 pandas
 pyarrow
-fastparquet
