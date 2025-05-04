@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+      "tenant_id": { "type": "string" },
+      "event_type": {
+        "type": "string",
+        "enum": ["page_view", "purchase"]
+      },
+      "user_id": { "type": "string" },
+      "timestamp": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "details": { "type": "object" }
+    },
+    "required": ["tenant_id", "event_type", "user_id", "timestamp"]
+  }
