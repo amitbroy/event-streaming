@@ -32,7 +32,6 @@ def write_to_parquet(df, tenant_id, dt):
     os.makedirs(output_path, exist_ok=True)
     file_path = os.path.join(output_path, "data.parquet")
     df.to_parquet(file_path, index=False)
-    print(f"✅ Wrote {len(df)} rows to {file_path}")
 
 def log_error(record, error_msg):
     with open(ERROR_LOG, "a") as f:
